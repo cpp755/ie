@@ -57,7 +57,7 @@
 
     function save() {
 
-        if (localStorage.getItem("temp").length == 0) {
+        if (localStorage.getItem("temp").length == 0 || localStorage.getItem("temp") == null) {
             var starter = {main: [{name: "", username: "", pass: "", role: ""}]};
             localStorage.setItem("temp", JSON.stringify(starter));
         }
