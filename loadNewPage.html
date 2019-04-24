@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:top="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>سامانه رفع مشکلات دانشگاه شهید بهشتی</title>
+</head>
+<body dir="rtl">
+
+<div align="center">
+    <br>
+    نام و نام خانوادگی : <br><input id="name" name="username" onclick="setDefaultColor(this.id)" type="text"><br>
+    نام کاربری : <br><input id="un" name="username" onclick="setDefaultColor(this.id)" type="text"><br>
+    گذرواژه : <br><input id="pw" name="password" onclick="setDefaultColor(this.id)" type="password"><br>
+    تکرار گذرواژه : <br><input id="pwrep" name="password" onclick="setDefaultColor(this.id)" type="password"><br>
+    نقش : <br><select id="role" name="role" onclick="setDefaultColor(this.id)">
+    <option value="null"></option>
+    <option value="1">دانشجو</option>
+    <option value="2">کارمند</option>
+    <option value="3">استاد</option>
+</select>
+    <br><br>
+    <input id="savedatas" onclick="checkInputs()" type="submit" value="ثبت نام">
+</div>
+
+<script>
+    var name, user, pass, passRep, role;
+
+    function setDefaultColor(el) {
+        document.getElementById(el).style.borderColor = "#000000"
+    }
+
+    function checkInputs() {
+        name = document.getElementById("name").value;
+        user = document.getElementById("un").value;
+        pass = document.getElementById("pw").value;
+        passRep = document.getElementById("pwrep").value;
+        role = document.getElementById("role").value;
+
+        if (name == null || name.length < 4) {
+            document.getElementById("name").style.borderColor = "#ff0000"
+        } else if (passRep != pass) {
+            document.getElementById("pwrep").style.borderColor = "#ff0000"
+        } else if (role != 1 & role != 2 & role != 3) {
+            document.getElementById("role").style.borderColor = "#ff0000"
+        }
+        //@TODO: check for duplicate username
+        else {
+            save();
+        }
+    }
+
+    function save() {
+
+        if (localStorage.getItem("temp").length == 0) {
+            var starter = {main: [{name: "", username: "", pass: "", role: ""}]};
+            localStorage.setItem("temp", JSON.stringify(starter));
+        }
+        var currentUser = {name: name, username: user, pass: pass, role: role};
+        var allData = JSON.parse(localStorage.getItem("temp"));
+        allData.main.push(currentUser);
+        localStorage.setItem("temp", JSON.stringify(allData));
+
+        // document.getElementById("saved").innerHTML += document.getElementById("pw").value;
+        // document.getElementById("saved").innerHTML += document.getElementById("role").value;
+
+    }
+
+</script>
+</body>
+</html>
