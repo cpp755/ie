@@ -20,10 +20,16 @@
 </select>
     <br><br>
     <input id="savedatas" onclick="checkInputs()" type="submit" value="ثبت نام">
+    <input id="login" onclick="openLoginPage()" type="submit" value="ورود">
+
 </div>
 
 <script>
     var name, user, pass, passRep, role;
+
+    function openLoginPage() {
+        window.location.href = "invokedPage.html";
+    }
 
     function setDefaultColor(el) {
         document.getElementById(el).style.borderColor = "#000000"
