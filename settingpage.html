@@ -9,20 +9,15 @@
 <div align="center">
     <br>
     نام کاربری :<br><input id="userName" name="username" type="text"><br>
-    رمز عبور :<br><input id="NewPass" name="password" type="password"><br>
-    تکرار رمز عبور :<br><input id="repeatPass" name="password" type="password"><br>
+    رمز عبور جدید :<br><input id="NewPass" name="password" type="password"><br>
+    تکرار رمز عبور جدید :<br><input id="repeatPass" name="password" type="password"><br>
     <br><br>
-    <input id="login" onclick="authenticate()" type="submit" value="ورود">
-    <input onclick="openSignUp()" type="submit" value="ثبت نام">
+    <input id="applyChanges" onclick="applyChanges()" type="submit" value="ثبت تغییرات">
 
 </div>
 
 <script>
-    function openSignUp() {
-        window.location.href = "loadNewPage.html";
-    }
-
-    function authenticate() {
+    function applyChanges() {
         var user = document.getElementById("userName").value;
         var newPass = document.getElementById("NewPass").value;
         var repeatNewPass = document.getElementById("repeatPass").value;
@@ -30,23 +25,37 @@
         console.log(newPass);
         console.log(repeatNewPass);
 
-        // var receivedData = JSON.parse(localStorage.getItem("temp"));
-        // var find = false;
-        // for (var i = 0; i < receivedData.main.length; i++) {
-        //     console.log(i);
-        //     if (user.length > 0 && pass.length > 0 && user == receivedData.main[i].username && pass == receivedData.main[i].pass) {
-        //         find = true;
-        //         break;
-        //     } else {
-        //     }
-        // }
-        // if (find) {
-        //     alert("success");
-        // } else {
-        //     alert("unsuccess");
-        // }
+        if (newPass == repeatNewPass) {
+            alert("تغییرات با موفقیت اعمال شد");
+            //@TODO: data must change
+
+        }
 
     }
+
+    // function openSignUp() {
+    //     window.location.href = "loadNewPage.html";
+    // }
+
+    // function authenticate() {
+    //
+    //     // var receivedData = JSON.parse(localStorage.getItem("temp"));
+    //     // var find = false;
+    //     // for (var i = 0; i < receivedData.main.length; i++) {
+    //     //     console.log(i);
+    //     //     if (user.length > 0 && pass.length > 0 && user == receivedData.main[i].username && pass == receivedData.main[i].pass) {
+    //     //         find = true;
+    //     //         break;
+    //     //     } else {
+    //     //     }
+    //     // }
+    //     // if (find) {
+    //     //     alert("success");
+    //     // } else {
+    //     //     alert("unsuccess");
+    //     // }
+    //
+    // }
 
     // document.getElementById("paraf").innerHTML += receiveddata.username + " size is: " + receiveddata.main[0].pass;
 </script>
