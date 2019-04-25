@@ -4,19 +4,32 @@
     <meta charset="UTF-8">
     <title>addCasePage</title>
 </head>
-<body>
+<body dir="rtl">
 
 <div align="center">
     <br>
-    دریافت کننده :<select id="role" name="role" onclick="setDefaultColor(this.id)">
+
+    دریافت کننده :<select style="margin:5px;" id="resiverName" name="role1" onclick="setDefaultColor(this.id)">
     <option value="null"></option>
-    <option value="1">دانشجو</option>
-    <option value="2">کارمند</option>
-    <option value="3">استاد</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
 </select>
+
+    موضوع :<select style="margin:5px;" id="titleName" name="role2" onclick="setDefaultColor(this.id)">
+    <option value="null"></option>
+    <option value="1">شکایت</option>
+    <option value="2">انتقاد</option>
+    <option value="3">پیشنهاد</option>
+    <option value="3">درخواست</option>
+</select>
+
+    <br>
+
+    <textarea rows="4" cols="50"></textarea>
     <br><br>
-    <input id="savedatas" onclick="checkInputs()" type="submit" value="ثبت نام">
-    <input id="login" onclick="openLoginPage()" type="submit" value="ورود">
+    <input id="laghvBtn" onclick="checkInputs()" type="submit" value="لغو">
+    <input id="sendBtn" onclick="openLoginPage()" type="submit" value="ارسال">
 
 </div>
 
