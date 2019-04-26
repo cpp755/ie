@@ -61,7 +61,11 @@
             var starter = {main: [{name: "", username: "", pass: "", role: "", verified: "0"}]};
             localStorage.setItem("temp", JSON.stringify(starter));
         }
-        var currentUser = {name: name, username: user, pass: pass, role: role, verified: "0"};
+        if (role == 2 || role == "2") {
+            var currentUser = {name: name, username: user, pass: pass, role: role, verified: "1"};
+        } else {
+            var currentUser = {name: name, username: user, pass: pass, role: role, verified: "0"};
+        }
         var allData = JSON.parse(localStorage.getItem("temp"));
         allData.main.push(currentUser);
         localStorage.setItem("temp", JSON.stringify(allData));

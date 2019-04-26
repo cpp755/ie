@@ -47,6 +47,16 @@
 </body>
 
 <script>
+    var users = JSON.parse(localStorage.getItem("temp"));
+    var valid = false;
+    for (var i = 0; i < users.main.length; i++) {
+        if (sessionStorage.getItem("currentUser") == users.main[i].username) {
+            valid = true;
+        }
+    }
+    if (!valid) {
+        window.location.href = "invokedPage.html"
+    }
     function goToSetting() {
         window.location.href = "settingpage.html";
     }

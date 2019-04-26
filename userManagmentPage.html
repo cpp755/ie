@@ -6,7 +6,7 @@
 </head>
 <body dir="rtl">
 
-<table id="user_Managment_table" style="width:80%" border="1px solid black" >
+<table border="1px solid black" id="user_Management_table" style="width:80%">
     <tr>
         <th>نام</th>
         <th>نام کاربری</th>
@@ -14,15 +14,67 @@
         <th>وضیعت</th>
         <th>حذف</th>
     </tr>
-    <tr>
-        <td>نام</td>
-        <td>نام کاربری</td>
-        <td>نقش</td>
-        <td>وضیعت</td>
-        <td>حذف</td>
-    </tr>
+    <!--    <tr>-->
+    <!--        <td>نام</td>-->
+    <!--        <td>نام کاربری</td>-->
+    <!--        <td>نقش</td>-->
+    <!--        <td>وضیعت</td>-->
+    <!--        <td>حذف</td>-->
+    <!--    </tr>-->
 
 </table>
 
 </body>
+
+
+<script>
+    var usersData = JSON.parse(localStorage.getItem("temp"));
+    var currentUser;
+
+    for (var x = 0; x < usersData.main.length; x++) {
+        currentUser = usersData.main[x];
+        var tableRow = document.createElement("tr");
+        var tableData = document.createElement("td");
+        tableData.innerHTML = currentUser.name;
+        tableRow.appendChild(tableData);
+
+        var tableData = document.createElement("td");
+        tableData.innerHTML = currentUser.username;
+        tableRow.appendChild(tableData);
+
+        var tableData = document.createElement("td");
+        switch (currentUser.role) {
+            case "1" :
+                tableData.innerHTML = "استاد";
+                break;
+            case "2" :
+                tableData.innerHTML = "دانشجو";
+                break;
+            case "3" :
+                tableData.innerHTML = "کارمند";
+                break;
+            default :
+                tableData.innerHTML = currentUser.role;
+        }
+        tableRow.appendChild(tableData);
+
+        var tableData = document.createElement("td");
+        switch (currentUser.verified) {
+            case "0" :
+                tableData.innerHTML = "تایید نشده";
+                break;
+            case "1" :
+                tableData.innerHTML = "تایید شده";
+                break;
+            default :
+                tableData.innerHTML = currentUser.verified;
+        }
+        tableRow.appendChild(tableData);
+
+        document.getElementById("user_Management_table").appendChild(tableRow);
+
+    }
+
+    //@TODO: check for both loged in and be admin
+</script>
 </html>

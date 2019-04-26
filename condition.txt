@@ -19,6 +19,9 @@
 1 : satisfied
 2 : unsatisfied
 
+0 : not verified
+1 : verified
+
 var caseContent = {
     sender: sender,
     receiver: receiver,
