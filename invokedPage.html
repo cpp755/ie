@@ -3,39 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <link rel="stylesheet" href="css/login.css" type="text/css">
     <link rel="stylesheet" href="css/global.css" type="text/css">
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
 </head>
 <body dir="rtl">
 
-<div>
-    <header>
-        <div class="container items">
-            <p>ورود</p>
-        </div>
-    </header>
-</div>
-
-<br><br><br><br><br>
 <div align="center">
-    <br>
-    نام کاربری : <br><input id="un" name="username" type="text"><br>
-    گذرواژه : <br><input id="pw" name="password" type="password"><br>
-    <br><br>
-    <input id="login" onclick="authenticate()" type="submit" value="ورود">
-    <input onclick="openSignUp()" type="submit" value="ثبت نام">
+    <nav class="menu-top">
+        <header>
+            <div class="container items">
+                <p>ورود</p>
+            </div>
+        </header>
+    </nav>
+
+
+    <br><br><br><br><br><br><br><br>
+
+    <div align="center" class="col-lg-8 col-12 form-content">
+        <form method="" action="">
+            <div class="form-group input">
+                <i class="far fa-envelope fa-2x"></i>
+                <input type="username" id="un" autocomplete="off" placeholder="نام کاربری" class="form-control" required="">
+                <label class="form-control-placeholder" for="un">نام کاربری</label>
+            </div>
+            <div class="form-group input">
+                <i class="fas fa-lock fa-2x"></i>
+                <input type="password" autocomplete="off" id="pw" placeholder="رمز عبور" class="form-control" required="">
+                <label class="form-control-placeholder" for="pw">رمز عبور</label>
+            </div>
+            <div class="form-group button">
+                <button class="btn btn-success btn-sm btn-block mt-3" id="login" onclick="authenticate()" type="submit"> ورود </button>
+                <button class="btn btn-danger btn-sm btn-block mt-3" onclick="openSignUp()" type="submit"> ثبت نام <i class="fab fa-google"></i></button>
+                <a class="btn btn-link btn-sm btn-block mt-3"> رمز خود را فراموش کرده اید ؟ </a>
+            </div>
+        </form>
+    </div>
+
+    <br><br><br><br><br><br><br>
 
 </div>
-
-<div/>
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
-
 
 <div>
     <footer>
         <div class="container items">
-            <p class="lg-show">تمامی حقوق وبسایت نزد دانشگاه شهید بهشتی محفوظ است.</p>
+            <p class="lg-show">تمامی حقوق وبسایت نزد سامانه بهشتی محفوظ است.</p>
         </div>
     </footer>
 </div>
