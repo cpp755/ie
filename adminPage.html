@@ -20,9 +20,9 @@
 <br><br><br><br><br><br><br>
 
 <div class="btn-group" style="width:100%" align="center">
-    <button id="setting" style="width:20%">نظیمات پروفایل</button>
-    <button id="allCases" style="width:20%">همه موارد اعضا</button>
-    <button id="userManagment" style="width:20%">مدیریت کاربران</button>
+    <button id="setting" onclick="goToSetting()" style="width:20%">نظیمات پروفایل</button>
+    <button id="allCases" onclick="goToHistory()" style="width:20%">همه موارد اعضا</button>
+    <button id="userManagment" onclick="goToUserManagement()" style="width:20%">مدیریت کاربران</button>
 </div>
 
 <br><br>
@@ -45,6 +45,18 @@
 </body>
 
 <script>
+    function goToSetting() {
+        window.location.href = "settingpage.html";
+    }
+
+    function goToHistory() {
+        window.location.href = "kartablHistoryPage.html";
+    }
+
+    function goToUserManagement() {
+        window.location.href = "userManagmentPage.html";
+    }
+
     function logOut() {
         sessionStorage.removeItem("currentUser");
         window.location.href = "invokedPage.html"
