@@ -9,14 +9,12 @@
 <div align="center">
     <br>
 
-    دریافت کننده :<select style="margin:5px;" id="resiverName" name="role1" onclick="setDefaultColor(this.id)">
+    دریافت کننده :<select id="receiverName" name="role1" style="margin:5px;">
     <option value="null"></option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
 </select>
 
-    موضوع :<select style="margin:5px;" id="titleName" name="role2" onclick="setDefaultColor(this.id)">
+
+    موضوع :<select id="titleName" name="role2" style="margin:5px;">
     <option value="null"></option>
     <option value="1">شکایت</option>
     <option value="2">انتقاد</option>
@@ -26,12 +24,64 @@
 
     <br>
 
-    <textarea rows="4" cols="50"></textarea>
+    <textarea cols="50" id="description" rows="4"></textarea>
     <br><br>
     <input id="laghvBtn" onclick="checkInputs()" type="submit" value="لغو">
-    <input id="sendBtn" onclick="openLoginPage()" type="submit" value="ارسال">
+    <input id="sendBtn" onclick="sendCase()" type="submit" value="ارسال">
 
 </div>
 
 </body>
+<script>
+
+    var receivedData = JSON.parse(localStorage.getItem("temp"));
+    var role;
+    for (var i = 0; i < receivedData.main.length; i++) {
+        role = receivedData.main[i].role;
+        if (role == 1 || role == 3) {
+            var option = document.createElement("option");
+            option.value = receivedData.main[i].username;
+            option.text = receivedData.main[i].name;
+            document.getElementById("receiverName").appendChild(option);
+        }
+    }
+
+    function sendCase() {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        today = mm + '/' + dd + '/' + yyyy;
+        //@TODO: change to persian calendar
+
+        var description = document.getElementById("description").value;
+        var sender = sessionStorage.getItem("currentUser");
+        var receiver = document.getElementById("receiverName").value;
+        var title = document.getElementById("titleName").value;
+        var condition = 0;
+        var caseContent = {
+            sender: sender,
+            receiver: receiver,
+            description: description,
+            title: title,
+            date: today,
+            condition: condition,
+            paraf: [{date: "", description: "", by: ""}]
+        };
+
+        var previous = JSON.parse(localStorage.getItem("cases"));
+
+        if (previous == null) {
+            console.log("inside if");
+            previous = {main: []};
+        }
+        previous.main.push(caseContent);
+
+        localStorage.setItem("cases", JSON.stringify(previous));
+
+    }
+
+
+    //@TODO: send successfully
+</script>
 </html>

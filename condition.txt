@@ -1,0 +1,20 @@
+ 0 : admin
+ 1 : prof
+ 2 : student
+ 3 : emp
+
+
+ 0 : open
+ 1 : pending
+ 2 : postpone
+ 3 : close
+
+
+0 : complain
+1 : Criticism
+2 : suggestion
+3 : request
+
+0 : not completed yet
+1 : satisfied
+2 : unsatisfied
