@@ -36,4 +36,39 @@
     box-shadow: none !important;
     border-radius: 0px !important;
 }
+.form-content small{display: none}
+.form-content input,
+.form-content small{
+        width: 90%;
+    margin-right: 40px;
+    padding-right: 0px;
+}
+.form-content .form-group.input i{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #aaa;
+}
+.form-content .form-group.button{
+    width: 60%;
+    margin: auto;
+}
+.form-content .form-group.button button{
+   box-shadow: 0 2px 5px 0px #aaa;
+}
 
+.form-content input::placeholder{
+    font-size: 12px;
+}
+
+.form-content{
+    background: #fff;
+    padding: 30px 10px;
+}
+
+.info-content{
+    background: #398E3D;
+    padding: 30px 10px;
+    text-align: center;
+    color: #eee;
+}
