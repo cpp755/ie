@@ -29,75 +29,88 @@
 
 </body>
 <script>
+    var sessionUser;
     var caseData = JSON.parse(localStorage.getItem("cases"));
     var currentCase;
     var nameTOusernameMap = new Map();
     var usersList = JSON.parse(localStorage.getItem("temp"));
-    for (var w = 0; w < usersList.main.length; w++) {
-        thisUser = usersList.main[w];
-        nameTOusernameMap.set(thisUser.username, thisUser.name);
+
+    if (sessionStorage.getItem("currentUser") == null) {
+        window.location.href = "invokedPage.html"
+    } else {
+        sessionUser = sessionStorage.getItem("currentUser");
+        for (var w = 0; w < usersList.main.length; w++) {
+            thisUser = usersList.main[w];
+            if (thisUser.username == sessionUser) {
+                sessionUser = thisUser;
+            }
+            nameTOusernameMap.set(thisUser.username, thisUser.name);
+        }
+
+        for (var x = 0; x < caseData.main.length; x++) {
+            currentCase = caseData.main[x];
+
+            if (sessionUser.role == 0 || (sessionUser.role == 2 && currentCase.sender == sessionUser.username) || ((sessionUser.role == 1 || sessionUser.role == 3) && currentCase.receiver == sessionUser.username)) {
+                var tableRow = document.createElement("tr");
+                var tableData = document.createElement("td");
+                tableData.innerHTML = currentCase.sender;
+                tableRow.appendChild(tableData);
+
+                var tableData = document.createElement("td");
+                tableData.innerHTML = currentCase.date;
+                tableRow.appendChild(tableData);
+
+                var tableData = document.createElement("td");
+                switch (currentCase.title) {
+                    case "0" :
+                        tableData.innerHTML = "شکایت";
+                        break;
+                    case "1" :
+                        tableData.innerHTML = "انتقاد";
+                        break;
+                    case "2" :
+                        tableData.innerHTML = "پیشنهاد";
+                        break;
+                    case "3" :
+                        tableData.innerHTML = "درخواست";
+                        break;
+                    default :
+                        tableData.innerHTML = currentCase.title;
+                }
+                tableRow.appendChild(tableData);
+
+                var tableData = document.createElement("td");
+                tableData.innerHTML = nameTOusernameMap.get(currentCase.receiver);
+                tableRow.appendChild(tableData);
+
+                var tableData = document.createElement("td");
+                tableData.innerHTML = currentCase.description;
+                tableRow.appendChild(tableData);
+
+                var tableData = document.createElement("td");
+                switch (currentCase.condition) {
+                    case 0 :
+                        tableData.innerHTML = "باز";
+                        break;
+                    case 1 :
+                        tableData.innerHTML = "در حال بررسی";
+                        break;
+                    case 2 :
+                        tableData.innerHTML = "تعویق";
+                        break;
+                    case 3 :
+                        tableData.innerHTML = "بسته";
+                        break;
+                    default :
+                        tableData.innerHTML = currentCase.condition;
+                }
+                tableRow.appendChild(tableData);
+
+                document.getElementById("history_table").appendChild(tableRow);
+            }
+        }
     }
 
-    for (var x = 0; x < caseData.main.length; x++) {
-        currentCase = caseData.main[x];
-        var tableRow = document.createElement("tr");
-        var tableData = document.createElement("td");
-        tableData.innerHTML = currentCase.sender;
-        tableRow.appendChild(tableData);
-
-        var tableData = document.createElement("td");
-        tableData.innerHTML = currentCase.date;
-        tableRow.appendChild(tableData);
-
-        var tableData = document.createElement("td");
-        switch (currentCase.title) {
-            case "0" :
-                tableData.innerHTML = "شکایت";
-                break;
-            case "1" :
-                tableData.innerHTML = "انتقاد";
-                break;
-            case "2" :
-                tableData.innerHTML = "پیشنهاد";
-                break;
-            case "3" :
-                tableData.innerHTML = "درخواست";
-                break;
-            default :
-                tableData.innerHTML = currentCase.title;
-        }
-        tableRow.appendChild(tableData);
-
-        var tableData = document.createElement("td");
-        tableData.innerHTML = nameTOusernameMap.get(currentCase.receiver);
-        tableRow.appendChild(tableData);
-
-        var tableData = document.createElement("td");
-        tableData.innerHTML = currentCase.description;
-        tableRow.appendChild(tableData);
-
-        var tableData = document.createElement("td");
-        switch (currentCase.condition) {
-            case 0 :
-                tableData.innerHTML = "باز";
-                break;
-            case 1 :
-                tableData.innerHTML = "در حال بررسی";
-                break;
-            case 2 :
-                tableData.innerHTML = "تعویق";
-                break;
-            case 3 :
-                tableData.innerHTML = "بسته";
-                break;
-            default :
-                tableData.innerHTML = currentCase.condition;
-        }
-        tableRow.appendChild(tableData);
-
-        document.getElementById("history_table").appendChild(tableRow);
-
-    }
     // var original = document.getElementById('duplicater' + i);
     // var clone = original.cloneNode(true); // "deep" clone
     // clone.id = "duplicater" + ++i; // there can only be one element with an ID
