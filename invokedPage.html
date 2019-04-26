@@ -25,25 +25,47 @@
     function authenticate() {
         var user = document.getElementById("un").value;
         var pass = document.getElementById("pw").value;
-        console.log(user);
-        console.log(pass);
+        // console.log(user);
+        // console.log(pass);
 
         var receivedData = JSON.parse(localStorage.getItem("temp"));
-        var find = false;
+        var role_ = 10000;
         for (var i = 0; i < receivedData.main.length; i++) {
-            console.log(i);
             if (user.length > 0 && pass.length > 0 && user == receivedData.main[i].username && pass == receivedData.main[i].pass) {
-                find = true;
+                role_ = receivedData.main[i].role;
+                // console.log(role_);
+                // console.log(typeof role_);
                 break;
             } else {
             }
         }
-        if (find) {
-            alert("success");
-            sessionStorage.setItem("currentUser", user);
-        } else {
-            alert("unsuccess");
+        switch (role_) {
+            case "0" :
+                window.location.href = "adminPage.html";
+                sessionStorage.setItem("currentUser", user);
+                break;
+            case "1" :
+                window.location.href = "employeePage.html";
+                sessionStorage.setItem("currentUser", user);
+                break;
+            case "2" :
+                window.location.href = "studentPage.html";
+                sessionStorage.setItem("currentUser", user);
+                break;
+            case "3" :
+                window.location.href = "employeePage.html";
+                sessionStorage.setItem("currentUser", user);
+                break;
+            default :
+                alert("حساب کاربری با این نام کاربری و رمز عبور پیدا نشد!")
         }
+        // if (find) {
+        //
+        //     alert("success");
+        //     sessionStorage.setItem("currentUser", user);
+        // } else {
+        //     alert("unsuccess");
+        // }
 
     }
 

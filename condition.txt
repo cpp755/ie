@@ -18,3 +18,15 @@
 0 : not completed yet
 1 : satisfied
 2 : unsatisfied
+
+var caseContent = {
+    sender: sender,
+    receiver: receiver,
+    description: description,
+    title: title,
+    date: today,
+    condition: condition,
+    paraf: [{date: "", description: "", by: ""}]
+};
+
+var currentUser = {name: name, username: user, pass: pass, role: role, verified: "0"};

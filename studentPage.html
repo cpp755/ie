@@ -29,7 +29,7 @@
 <br><br>
 
 <div class="logout_btn" align="center">
-    <button id="logOut" style="width:15%" >خروج</button>
+    <button id="logOut" onclick="logOut()" style="width:15%">خروج</button>
 </div>
 
 
@@ -57,6 +57,11 @@
 
     function goToHistory() {
         // window.location.href = "invokedPage.html";
+    }
+
+    function logOut() {
+        sessionStorage.removeItem("currentUser");
+        window.location.href = "invokedPage.html"
     }
 </script>
 </html>
