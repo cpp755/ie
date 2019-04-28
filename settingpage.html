@@ -4,44 +4,58 @@
     <meta charset="UTF-8">
     <title>settingPage</title>
 
+    <link rel="stylesheet" href="css/login.css" type="text/css">
     <link rel="stylesheet" href="css/global.css" type="text/css">
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
 </head>
 <body>
 
-<div>
-    <header>
-        <div class="container items">
-            <p>تنظیمات</p>
-        </div>
-    </header>
-</div>
-
-<br><br><br><br><br><br><br>
-
-
 <div align="center">
-    <br>
-    نام کاربری :<br><input id="userName" name="username" type="text"><br>
-    رمز عبور جدید :<br><input id="NewPass" name="password" type="password"><br>
-    تکرار رمز عبور جدید :<br><input id="repeatPass" name="password" type="password"><br>
-    <br><br>
-    <input id="applyChanges" onclick="applyChanges()" type="submit" value="ثبت تغییرات">
+    <nav class="menu-top">
+        <header>
+            <div class="container items">
+                <p>تنظیمات</p>
+            </div>
+        </header>
+    </nav>
+    <br><br><br><br><br><br>
+
+    <div align="center" class="col-lg-8 col-12 form-content">
+        <form method="" action="">
+            <div class="form-group input">
+                <i class="far fa-envelope fa-2x"></i>
+                <input type="text" id="userName" name="username" autocomplete="off" placeholder="نام کاربری" class="form-control" required="">
+                <label class="form-control-placeholder" for="userName">نام کاربری</label>
+            </div>
+            <div class="form-group input">
+                <i class="fas fa-lock fa-2x"></i>
+                <input type="password" autocomplete="off" id="NewPass" name="password" placeholder="رمز عبور" class="form-control" required="">
+                <label class="form-control-placeholder" for="NewPass">رمز عبور</label>
+            </div>
+            <div class="form-group input">
+                <i class="fas fa-lock fa-2x"></i>
+                <input type="password" autocomplete="off" id="repeatPass" name="rpassword" placeholder="تکرار رمز عبور" class="form-control" required="">
+                <label class="form-control-placeholder" for="repeatPass">تکرار رمز عبور</label>
+            </div>
+            <div class="form-group button">
+                <button class="btn btn-success btn-sm btn-block mt-3" id="applyChanges" onclick="applyChanges()" type="submit"> ثبت تغییرات </button>
+            </div>
+        </form>
+    </div>
+
+
+    <br><br><br><br><br><br><br>
+
+
+    <div>
+        <footer>
+            <div class="container items">
+                <p class="lg-show">تمامی حقوق وبسایت نزد دانشگاه شهید بهشتی محفوظ است.</p>
+            </div>
+        </footer>
+    </div>
 
 </div>
-
-
-<br><br><br><br><br><br><br><br><br>
-
-
-<div>
-    <footer>
-        <div class="container items">
-            <p class="lg-show">تمامی حقوق وبسایت نزد دانشگاه شهید بهشتی محفوظ است.</p>
-        </div>
-    </footer>
-</div>
-
 </body>
 
 <script>
